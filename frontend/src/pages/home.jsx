@@ -1,53 +1,24 @@
 function Home() {
-  return (
-    <div>
-      <h1>MANAGE YOUR CUSTOMERS AND INVOICES EASILY</h1>
+    return (
+        <div>
+            <section
+                className="bg-cogip-yellow  h-screen w-screen">
 
-      <section>
-      <h2>Last invoices</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Invoice number</th>
-            <th>Due dates</th>
-            <th>Company</th>
-            <th>Created at</th>
-          </tr>
-        </thead>
-      </table>
-      </section>
+                <div className="p-30 flex items-center font-black leading-16 font-cogip-inter align-middle">
+                    <div className=" flex-1 text-7xl ">MANAGE YOUR
+                        CUSTOMERS AND
+                        INVOICES EASILY
+                    </div>
+                    <img src="/index/index_illustration.png" className="flex-1 text-8xl " alt="coder hipster">
+                    </img>
+                </div>
+            </section>
 
-      <section>
-      <h2>Last contacts</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Mail</th>
-            <th>Company</th>
-            <th>Created at</th>
-          </tr>
-        </thead>
-      </table>
-      </section>
+            <section>
 
-      <section>
-      <h2>Last companies</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>TVA</th>
-            <th>Country</th>
-            <th>Type</th>
-            <th>Created at</th>
-          </tr>
-        </thead>
-      </table>
-      </section>
-    </div>
-  );
+            </section>
+        </div>
+    );
 }
 
 export default Home;
