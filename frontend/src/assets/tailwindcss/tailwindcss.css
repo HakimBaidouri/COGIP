@@ -3,6 +3,10 @@
 
 @theme {
     --color-cogip-yellow: rgb(249, 222, 78);
+
+}
+
+:root {
     --font-cogip-inter: "Inter", serif;
     --font-cogip-roboto: "Roboto", sans-serif;
 }
