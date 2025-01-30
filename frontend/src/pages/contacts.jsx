@@ -23,11 +23,11 @@ function Contacts() {
             </thead>
             <tbody>
               <tr>
-                <td>John Doe</td>
-                <td>+123456789</td>
-                <td>johndoe@example.com</td>
-                <td>Company A</td>
-                <td>2024-01-29</td>
+                <td>Name</td>
+                <td>Nbr Phone</td>
+                <td>mail@example.com</td>
+                <td>Company</td>
+                <td>date</td>
               </tr>
             </tbody>
           </table>

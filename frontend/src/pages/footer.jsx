@@ -1,11 +1,17 @@
 import { NavLink } from "react-router-dom";
 
-function Header() {
+function Footer() {
     return (
-      <header>
+      <footer>
         <div>
           {/* Logo */}
           <h1>COGIP</h1>
+
+          <section>
+            <p>345 Faulconer Drive, Suite 4 • Charlottesville, CA, 12345</p>
+            <p><span>(123) 456-7890</span><span>(123) 456-7890</span></p>
+            <p>Social Media</p>
+          </section>
   
         <nav>
           <ul>
@@ -15,15 +21,13 @@ function Header() {
             <li><NavLink to="/contacts">Contacts</NavLink></li>
           </ul>
         </nav>
-  
-          <div>
-            <button>Sign up</button>
-            <a href="#">Login</a>
-          </div>
+
+        <p>Copyright &copy; 2022 • COGIP Inc.</p>
+
         </div>
-      </header>
+      </footer>
     );
   }
   
-  export default Header;
+  export default Footer;
   
