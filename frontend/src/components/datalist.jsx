@@ -1,53 +1,50 @@
-export default function Datalist({table_name, nbre_rows, column1, column2, column3, column4}) {
-    return (<section className="p-30 flex">
-        <div className="datalist">
+export default function Datalist({table, nbre_rows, columns}) {
+    // S'assurer qu'il y a toujours 6 colonnes
+    const completeColumns = Array.from({length: 6}, (_, index) => {
+        return columns[index] || {
+            name: '',
+            data: Array(nbre_rows).fill('')
+        }; // Remplir avec des colonnes vides si nécessaire
+    });
 
-            <h2 className="font-black font-cogip-inter text-5xl capitalize pb-20">{table_name}</h2>
-
-            <table className="w-420">
-
-                <Columns column1={column1} column2={column2} column3={column3} column4={column4}/>
-                <Rows nbre_rows={nbre_rows}/>
-
-            </table>
-        </div>
-    </section>);
+    return (
+        <section className="p-30 flex">
+            <div className="datalist">
+                <h2 className="font-black font-cogip-inter text-5xl capitalize pb-20">last {table}</h2>
+                <table className="w-420">
+                    <thead>
+                    <Columns columns={completeColumns}/>
+                    </thead>
+                    <tbody>
+                    <Rows nbre_rows={nbre_rows} columns={completeColumns}/>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    );
 }
 
-function Columns({column1, column2, column3, column4}) {
+function Columns({columns}) {
     return (
-        <tr className="text-left font-cogip-roboto bg-cogip-yellow h-10 capitalize font-semibold ">
-            <th className="pl-8">{column1}</th>
-            <th>{column2}</th>
-            <th>{column3}</th>
-            <th>{column4}</th>
+        <tr className="text-left font-cogip-roboto bg-cogip-yellow h-12 capitalize font-semibold">
+            {columns.map((col, index) => (
+                <th key={index} className={index === 0 ? "pl-8 w-1/6" : "w-1/6"}>{col.name}</th> // Appliquer pl-8 uniquement à la première colonne
+            ))}
         </tr>
     );
-
 }
 
-function Rows({nbre_rows}) {
-
+function Rows({nbre_rows, columns}) {
     let rows = [];
 
     for (let i = 0; i < nbre_rows; i++) {
-
         const backgroundColor = i % 2 === 0 ? "bg-white" : "bg-gray-100";
 
         rows.push(
-            <tr className={`text-left font-cogip-roboto font-semibold pl3 ${backgroundColor}`}>
-                <td key={i} className="pl-8">
-                    This is a test : {i + 1}
-                </td>
-                <td key={i}>
-                    This is a test : {i + 1}
-                </td>
-                <td key={i}>
-                    This is a test : {i + 1}
-                </td>
-                <td key={i}>
-                    This is a test : {i + 1}
-                </td>
+            <tr className={`text-left font-cogip-roboto font-semibold pl-3 ${backgroundColor}`}>
+                {columns.map((col, index) => (
+                    <td key={index} className={index === 0 ? "pl-8 w-1/6 h-12" : "w-1/6 h-12"}>{col.data[i]}</td> // Appliquer pl-8 uniquement à la première colonne
+                ))}
             </tr>
         );
     }
