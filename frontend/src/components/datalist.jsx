@@ -4,7 +4,7 @@ export default function Datalist({table_name, nbre_rows, column1, column2, colum
 
             <h2 className="font-black font-cogip-inter text-5xl capitalize pb-20">{table_name}</h2>
 
-            <table className="w-[1200px]">
+            <table className="w-420">
 
                 <Columns column1={column1} column2={column2} column3={column3} column4={column4}/>
                 <Rows nbre_rows={nbre_rows}/>
@@ -16,8 +16,8 @@ export default function Datalist({table_name, nbre_rows, column1, column2, colum
 
 function Columns({column1, column2, column3, column4}) {
     return (
-        <tr className=" w-[100%] p-2 justify-between font-cogip-roboto bg-cogip-yellow text-center">
-            <th>{column1}</th>
+        <tr className="text-left font-cogip-roboto bg-cogip-yellow h-10 capitalize font-semibold ">
+            <th className="pl-8">{column1}</th>
             <th>{column2}</th>
             <th>{column3}</th>
             <th>{column4}</th>
@@ -35,8 +35,8 @@ function Rows({nbre_rows}) {
         const backgroundColor = i % 2 === 0 ? "bg-white" : "bg-gray-100";
 
         rows.push(
-            <tr className={`w-[100%] justify-between font-cogip-roboto ${backgroundColor}`}>
-                <td key={i}>
+            <tr className={`text-left font-cogip-roboto font-semibold pl3 ${backgroundColor}`}>
+                <td key={i} className="pl-8">
                     This is a test : {i + 1}
                 </td>
                 <td key={i}>

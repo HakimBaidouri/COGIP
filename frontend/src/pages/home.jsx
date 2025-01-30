@@ -20,9 +20,9 @@ function Home() {
             <Datalist
                 table_name={"companies"}
                 nbre_rows={16}
-                column1={"Name"}
-                column2={"VAT"}
-                column3={"Country"}
+                column1={"name"}
+                column2={"vat"}
+                column3={"country"}
                 column4={"Type"}
 
             />
