@@ -1,3 +1,5 @@
+import Datalist from "../components/datalist.jsx";
+
 function Home() {
     return (
         <div>
@@ -15,7 +17,36 @@ function Home() {
 
             </section>
 
-            
+            <Datalist
+                table_name={"companies"}
+                nbre_rows={16}
+                column1={"Name"}
+                column2={"VAT"}
+                column3={"Country"}
+                column4={"Type"}
+
+            />
+
+            <Datalist
+                table_name={"contacts"}
+                nbre_rows={120}
+                column1={"First Name"}
+                column2={"Last Name"}
+                column3={"Email"}
+                column4={"Phone"}
+
+            />
+
+            <Datalist
+                table_name={"invoices"}
+                nbre_rows={5}
+                column1={"Company Name"}
+                column2={"Invoice Date"}
+                column3={"Invoice Number"}
+                column4={"Total Amount"}
+
+            />
+
             <section
                 className="h-[550px] w-screen relative overflow-hidden">
 
