@@ -1,4 +1,4 @@
-export default function Datalist({table, nbre_rows, columns}) {
+export default function Datalist({title, nbre_rows, columns, decorationBar}) {
     // S'assurer qu'il y a toujours 6 colonnes
     const completeColumns = Array.from({length: 6}, (_, index) => {
         return columns[index] || {
@@ -10,7 +10,12 @@ export default function Datalist({table, nbre_rows, columns}) {
     return (
         <section className="p-30 flex">
             <div className="datalist">
-                <h2 className="font-black font-cogip-inter text-5xl capitalize pb-20">last {table}</h2>
+                <h2 className="font-black font-cogip-inter text-5xl capitalize pb-20">{title}</h2>
+                {decorationBar && (
+                    <span className="relative block h-7
+                     w-55 bg-cogip-yellow top-[-95px] left-[130px] z-[-1]"></span>
+                )}
+
                 <table className="w-420">
                     <thead>
                     <Columns columns={completeColumns}/>
