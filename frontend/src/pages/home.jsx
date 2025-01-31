@@ -59,19 +59,19 @@ function Home() {
             </section>
 
             <Datalist
-                table={"invoices"}
+                title={"last invoices"}
                 nbre_rows={columns[0].data.length}
                 columns={columns}
             />
 
             <Datalist
-                table={"contacts"}
+                title={"last contacts"}
                 nbre_rows={12}
                 columns={columnsLarge}
             />
 
             <Datalist
-                table={"companies"}
+                title={"last companies"}
                 nbre_rows={columnsSmall[0].data.length}
                 columns={columnsSmall}
             />
