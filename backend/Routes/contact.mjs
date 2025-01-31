@@ -14,10 +14,16 @@ const router = express.Router();
 
 //get all contacts
 router.get("/", (req, res) => {
-  const selectAllContactsQuery = `SELECT 
-  contacts.name, companies.name, contacts.email, contacts.phone FROM contacts
-  JOIN companies
-  ON contacts.company_id = companies.id`;
+  const selectAllContactsQuery = `
+  SELECT 
+    contacts.name AS contact_name,  -- Alias the contact name
+    companies.name AS company_name, -- Alias the company name
+    contacts.email, 
+    contacts.phone,
+    contacts.created_at 
+  FROM contacts
+  JOIN companies ON contacts.company_id = companies.id
+`;
   connection.query(selectAllContactsQuery, (err, results) => {
     if (err) {
       return res.status(500).json({
@@ -25,7 +31,6 @@ router.get("/", (req, res) => {
       });
     }
     res.status(200).json(results);
-    //TODOO créer un json
   });
 });
 
@@ -61,8 +66,8 @@ router.post("/", (req, res) => {
   }
 
   //verify if the email already exist
-  const checkEmailRequest = "SELECT email FROM contacts WHERE email = ?";
-  connection.query(checkEmailRequest, [email], (err, result) => {
+  const checkEmailQuery = "SELECT email FROM contacts WHERE email = ?";
+  connection.query(checkEmailQuery, [email], (err, result) => {
     if (err) {
       return res.status(500).json({
         error: "Error occurred while select the email.",
