@@ -112,7 +112,7 @@ router.put("/:id", (req, res) => {
   }
 
   //Very if the id exists in the database
-  const selectIdQuery = "SELECT id FROM contacts WHERE email= ?";
+  const selectIdQuery = "SELECT id FROM contacts WHERE id= ?";
   connection.query(selectIdQuery, [email], (err, result) => {
     if (err) {
       return res.status(500).json({
@@ -148,7 +148,7 @@ router.put("/:id", (req, res) => {
     WHERE id = ?`;
     connection.query(
       updateContactQuery,
-      [name, company_id, email, phone, convertToMySqlDate(Date.now()), id],
+      [name, company_id, email, phone, convertToMySqlDate(), id],
       (err) => {
         if (err) {
           console.log(err);
