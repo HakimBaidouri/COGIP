@@ -7,7 +7,7 @@ function Header() {
     <header className="w-screen font-cogip-roboto font-black bg-cogip-yellow pt-15 overflow-hidden">
       <div className="container mx-auto flex items-center justify-between pl-1">
         
-        <h1 className="text-5xl font-black">COGIP</h1>
+        <h1><NavLink to="/" className="text-5xl font-black">COGIP</NavLink></h1>
 
         <nav>
           <ul className="flex gap-7 text-lg font-bold pr-60">

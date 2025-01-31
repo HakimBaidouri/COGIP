@@ -2,9 +2,9 @@ import { useState } from "react";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Header from "./pages/header.jsx";
+import Header from "./components/header.jsx";
 import Nav from "./components/nav.jsx";
-import Footer from "./pages/footer.jsx";
+import Footer from "./components/footer.jsx";
 
 function App() {
   return (
