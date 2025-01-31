@@ -12,9 +12,14 @@ connection.connect((err) => {
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.send({ data: `Here is your data` });
-    }
-)
+    connection.query('SELECT * FROM invoices', (err, result) => {
+      if(err){
+        console.error("Erreur de l'affichage des données :", err);
+        return res.status(500).json({ message: 'Erreur serveur' });
+      }
+      res.send(result);
+    })
+})
 
 router.post('/', (req, res) => {
     res.send({ data: `User created` })
