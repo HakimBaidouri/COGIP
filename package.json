@@ -1,13 +1,12 @@
 {
- "scripts": {
-  "dev": "nodemon backend/index.mjs"
- },
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "mysql2": "^3.12.0"
-  },
-  "devDependencies": {
+    "mysql2": "^3.12.0",
     "nodemon": "^3.1.9"
+  },
+  "scripts": {
+    "dev": "nodemon --experimental-specifier-resolution=node ./backend/index.mjs"
   }
 }
