@@ -44,19 +44,6 @@ const columnsSmall = [
 function Home() {
     return (
         <div className="w-screen overflow-hidden">
-            <section
-                className="bg-cogip-yellow  h-screen w-screen">
-
-                <div className="p-30 flex items-center font-black leading-[78] font-cogip-inter align-middle">
-                    <div className=" flex-1 text-7xl uppercase">MANAGE YOUR
-                        CUSTOMERS AND
-                        INVOICES EASILY
-                    </div>
-                    <img src="/index/index_illustration.png" className="flex-1 text-8xl " alt="coder hipster">
-                    </img>
-                </div>
-
-            </section>
 
             <Datalist
                 title={"last invoices"}
