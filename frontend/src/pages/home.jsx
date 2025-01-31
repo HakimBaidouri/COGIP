@@ -43,7 +43,7 @@ const columnsSmall = [
 
 function Home() {
     return (
-        <div>
+        <div className="w-screen overflow-hidden">
             <section
                 className="bg-cogip-yellow  h-screen w-screen">
 
@@ -65,12 +65,20 @@ function Home() {
                 decorationBar={false}
             />
 
+            <div className="relative">
+                <img src="/index/notepad.png" alt="" className="absolute right-0"/>
+            </div>
+
             <Datalist
                 title={"last contacts"}
                 nbre_rows={12}
                 columns={columnsLarge}
                 decorationBar={false}
             />
+
+            <div className="relative">
+                <img src="/index/bulb.png" alt="" className="absolute left-0"/>
+            </div>
 
             <Datalist
                 title={"last companies"}
