@@ -16,8 +16,6 @@ const columnsLarge = [
 function Companies() {
     return (
         <div>
-            <h2>All companies</h2>
-
             <section>
                 <form>
                     <input type="text" className="border p-2" placeholder="Search contact" id="search-input"/>
