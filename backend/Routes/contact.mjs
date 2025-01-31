@@ -50,7 +50,7 @@ router.get("/:id", (req, res) => {
         error: "Contact not found.",
       });
     }
-    res.status(200).json(results[0]);
+   return res.status(200).json(results[0]);
   });
 });
 
