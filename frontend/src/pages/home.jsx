@@ -62,18 +62,21 @@ function Home() {
                 title={"last invoices"}
                 nbre_rows={columns[0].data.length}
                 columns={columns}
+                decorationBar={false}
             />
 
             <Datalist
                 title={"last contacts"}
                 nbre_rows={12}
                 columns={columnsLarge}
+                decorationBar={false}
             />
 
             <Datalist
                 title={"last companies"}
                 nbre_rows={columnsSmall[0].data.length}
                 columns={columnsSmall}
+                decorationBar={false}
             />
 
             <section

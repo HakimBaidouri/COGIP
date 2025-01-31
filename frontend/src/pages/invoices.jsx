@@ -27,6 +27,7 @@ function Companies() {
                 title={"All invoices"}
                 nbre_rows={columnsLarge[0].data.length}
                 columns={columnsLarge}
+                decorationBar={true}
             />
 
             <section>
