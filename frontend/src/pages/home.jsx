@@ -50,6 +50,8 @@ function Home() {
                 nbre_rows={columns[0].data.length}
                 columns={columns}
                 decorationBar={false}
+                hideSearchBar={true}
+                hidePagination={true}
             />
 
             <div className="relative">
@@ -61,6 +63,8 @@ function Home() {
                 nbre_rows={12}
                 columns={columnsLarge}
                 decorationBar={false}
+                hideSearchBar={true}
+                hidePagination={true}
             />
 
             <div className="relative">
@@ -72,6 +76,8 @@ function Home() {
                 nbre_rows={columnsSmall[0].data.length}
                 columns={columnsSmall}
                 decorationBar={false}
+                hideSearchBar={true}
+                hidePagination={true}
             />
 
             <section

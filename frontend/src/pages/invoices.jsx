@@ -16,27 +16,12 @@ const columnsLarge = [
 function Companies() {
     return (
         <div>
-            <section>
-                <form>
-                    <input type="text" className="border p-2" placeholder="Search contact" id="search-input"/>
-                    <button type="submit">Search</button>
-                </form>
-            </section>
-
             <Datalist
                 title={"All invoices"}
                 nbre_rows={columnsLarge[0].data.length}
                 columns={columnsLarge}
                 decorationBar={true}
             />
-
-            <section>
-                <ul>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                </ul>
-            </section>
         </div>
     );
 }
