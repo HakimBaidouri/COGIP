@@ -4,6 +4,7 @@ import Home from "../pages/home.jsx";
 import Invoices from "../pages/invoices.jsx";
 import Contacts from "../pages/contacts.jsx";
 import Companies from "../pages/companies.jsx";
+import Login from "../pages/dashboard/loginDash.jsx";
 
 function Nav() {
   return (
@@ -12,6 +13,7 @@ function Nav() {
       <Route path="/invoices" element={<Invoices />} />
       <Route path="/contacts" element={<Contacts />} />
       <Route path="/companies" element={<Companies />} />
+      <Route path="/loginDash" element={<Login />} />
     </Routes>
   );
 }
