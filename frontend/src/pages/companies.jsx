@@ -16,13 +16,6 @@ const columnsLarge = [
 function Companies() {
     return (
         <div>
-            <section>
-                <form>
-                    <input type="text" className="border p-2" placeholder="Search contact" id="search-input"/>
-                    <button type="submit">Search</button>
-                </form>
-            </section>
-
             <Datalist
                 title={"All companies"}
                 nbre_rows={columnsLarge[0].data.length}
