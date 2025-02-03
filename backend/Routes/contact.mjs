@@ -15,7 +15,8 @@ const router = express.Router();
 //get all contacts
 router.get("/", (req, res) => {
   const selectAllContactsQuery = `
-  SELECT 
+  SELECT
+    contacts.id, 
     contacts.name AS contact_name,  -- Alias the contact name
     companies.name AS company_name, -- Alias the company name
     contacts.email, 
@@ -113,7 +114,7 @@ router.put("/:id", (req, res) => {
 
   //Very if the id exists in the database
   const selectIdQuery = "SELECT id FROM contacts WHERE id= ?";
-  connection.query(selectIdQuery, [email], (err, result) => {
+  connection.query(selectIdQuery, [id], (err, result) => {
     if (err) {
       return res.status(500).json({
         error: "Error during searching the id in the database",
@@ -151,7 +152,6 @@ router.put("/:id", (req, res) => {
       [name, company_id, email, phone, convertToMySqlDate(), id],
       (err) => {
         if (err) {
-          console.log(err);
           return res.status(500).json({
             error: "Error occured during updating the contact",
           });
