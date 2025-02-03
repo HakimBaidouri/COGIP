@@ -38,7 +38,7 @@ export default function Datalist({ title, nbre_rows, columns, decorationBar, hid
             }
         ));
     return (
-        <section className="p-30 flex w-full overflow-hidden">
+        <section className="px-30 py-10 flex w-full overflow-hidden">
             <div className="datalist w-full overflow-hidden">
                 <h2 className="font-black font-cogip-inter text-5xl capitalize pb-20">{title}</h2>
                 
