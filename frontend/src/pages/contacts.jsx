@@ -21,15 +21,7 @@ function Companies() {
                 nbre_rows={columnsLarge[0].data.length}
                 columns={columnsLarge}
                 decorationBar={true}
-            />
-
-            <section>
-                <ul>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                </ul>
-            </section>
+            />           
         </div>
     );
 }

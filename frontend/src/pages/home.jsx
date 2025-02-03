@@ -51,6 +51,7 @@ function Home() {
                 columns={columns}
                 decorationBar={false}
                 hideSearchBar={true}
+                hidePagination={true}
             />
 
             <div className="relative">
@@ -63,6 +64,7 @@ function Home() {
                 columns={columnsLarge}
                 decorationBar={false}
                 hideSearchBar={true}
+                hidePagination={true}
             />
 
             <div className="relative">
@@ -75,6 +77,7 @@ function Home() {
                 columns={columnsSmall}
                 decorationBar={false}
                 hideSearchBar={true}
+                hidePagination={true}
             />
 
             <section
