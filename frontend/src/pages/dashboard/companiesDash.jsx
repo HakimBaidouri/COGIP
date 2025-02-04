@@ -1,17 +1,6 @@
 function contactsDash(){
     <div>
-        <section>
-            <h3>Dashboard</h3> {/* BDD */}
-            <p>dashboard/new-companie</p>
-        </section>
-
-        <section>
-            <h2>Welcome back 'Name'</h2>  {/* BDD */}
-            <p>You can here add an invoice, a company
-            and some contacts</p>
-            <img src="" alt="" />
-        </section>
-
+       
         <section>
             <p>New companie</p>
         </section>

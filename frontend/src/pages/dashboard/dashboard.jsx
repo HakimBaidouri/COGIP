@@ -1,17 +1,6 @@
 function Dashboard(){
     <div>
-        <section>
-            <h3>Dashboard</h3> {/* BDD */}
-            <p>dashboard/</p>
-        </section>
-
-        <section>
-            <h2>Welcome back 'Name'</h2>
-            <p>You can here add an invoice, a company
-            and some contacts</p>
-            <img src="" alt="" />
-        </section>
-
+        
         <section> {/* BDD pour chiffre */}
             <p>Statistics</p>
             <p>Invoices</p>

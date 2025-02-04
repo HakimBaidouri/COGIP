@@ -1,18 +1,6 @@
 function invoicesDash(){
     <div>
         <section>
-            <h3>Dashboard</h3> {/* BDD */}
-            <p>dashboard/new-invoice</p>
-        </section>
-
-        <section>
-            <h2>Welcome back 'Name'</h2>  {/* BDD */}
-            <p>You can here add an invoice, a company
-            and some contacts</p>
-            <img src="" alt="" />
-        </section>
-
-        <section>
             <p>New Invoice</p>
         </section>
 

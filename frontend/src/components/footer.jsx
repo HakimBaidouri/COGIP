@@ -1,6 +1,10 @@
 import { NavLink } from "react-router-dom";
 
 function Footer() {
+  if (location.pathname === "/sidebar") {
+    return null; // Ne rien afficher si on est sur la page de login
+  }
+
     return (
       <footer>
         <div className="container mx-auto px-15 font-cogip-inter">

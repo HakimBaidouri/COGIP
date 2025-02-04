@@ -3,6 +3,11 @@ import { NavLink, useLocation } from "react-router-dom";
 function Header() {
   const location = useLocation(); 
 
+  // ATTENTION A MODIFIER AVEC LOGIN
+  if (location.pathname === "/sidebar") {
+    return null; // Ne rien afficher si on est sur la page de login
+  }
+
   return (
     <header className="w-screen font-cogip-roboto font-black bg-cogip-yellow pt-15 overflow-hidden">
       <div className="container mx-auto flex items-center justify-between pl-1">
@@ -18,8 +23,12 @@ function Header() {
           </ul>
         </nav>
 
+        {/* ATTENTION JUSTE EN TEST LE NAVLINK */}
         <div className="flex gap-3 items-center text-lg font-bold pr-7">
-          <a href="#" className="px-2 rounded-lg hover:bg-white text-black transition">Sign up</a>
+        <NavLink to="/sidebar" className="px-2 rounded-lg hover:bg-white text-black transition">
+          Sign up
+        </NavLink>         
+
           <a href="#" className="px-2 rounded-lg hover:bg-white text-black transition">Login</a>
         </div>
       </div>
