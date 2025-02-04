@@ -1,4 +1,5 @@
 function contactsDash(){
+    return(
     <div>
        
         <section>
@@ -25,6 +26,7 @@ function contactsDash(){
         </section>
         
     </div>
+    );
 }
 
 export default contactsDash;

@@ -1,4 +1,5 @@
 function invoicesDash(){
+    return(
     <div>
         <section>
             <p>New Invoice</p>
@@ -24,6 +25,7 @@ function invoicesDash(){
         </section>
         
     </div>
+    );
 }
 
 export default invoicesDash;

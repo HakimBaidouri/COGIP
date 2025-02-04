@@ -10,6 +10,7 @@ import ContactsDash from "../pages/dashboard/contactsDash.jsx";
 import CompaniesDash from "../pages/dashboard/companiesDash.jsx";
 import InvoicesDash from "../pages/dashboard/invoicesDash.jsx";
 import Sidebar from "../pages/dashboard/sidebar.jsx";
+import HeaderDash from "../pages/dashboard/headerDash.jsx";
 
 function Nav() {
   return (
@@ -27,6 +28,7 @@ function Nav() {
 
       {/* Route pour le sidebar */}
       <Route path="/sidebar" element={<Sidebar />} />    
+      <Route path="/headerDash" element={<HeaderDash />} />    
       </Routes>
   );
 }

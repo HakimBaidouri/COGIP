@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 function Dashboard(){
+  return(
     <div>
         
         <section> {/* BDD pour chiffre */}
@@ -73,6 +74,7 @@ function Dashboard(){
         </section>
         
     </div>
+  );
 }
 
 export default Dashboard;
