@@ -60,8 +60,8 @@ function Sidebar() {
 
       {/* CONTENU PRINCIPAL */}
       <div className="flex-1 p-8 bg-indigo-100 relative">
-        <h3 className="text-2xl font-bold">Dashboard</h3>
-        <p className="text-gray-500">dashboard/</p>
+        <h3 className="text-2xl ml-8 font-bold">Dashboard</h3>
+        <p className="text-gray-500 ml-8 ">dashboard/</p>
 
         <section className="m-8 bg-cogip-blue text-white rounded-lg p-15 relative">
         <img 
