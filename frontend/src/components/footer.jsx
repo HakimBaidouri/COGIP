@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 function Footer() {
-  if (location.pathname === "/sidebar") {
+  if (location.pathname === "/dashboard") {
     return null; // Ne rien afficher si on est sur la page de login
   }
 

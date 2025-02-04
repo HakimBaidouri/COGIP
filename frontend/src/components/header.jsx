@@ -4,8 +4,8 @@ function Header() {
   const location = useLocation(); 
 
   // ATTENTION A MODIFIER AVEC LOGIN
-  if (location.pathname === "/sidebar") {
-    return null; // Ne rien afficher si on est sur la page de login
+  if (location.pathname === "/dashboard" || location.pathname.startsWith("/dashboard")) {
+    return null; // Ne rien afficher si on est sur la page de login ou sur une page dashboard
   }
 
   return (
@@ -23,11 +23,11 @@ function Header() {
           </ul>
         </nav>
 
-        {/* ATTENTION JUSTE EN TEST LE NAVLINK */}
+        {/* ATTENTION JUSTE EN TEST LE NAVLINK avec dashboard */}
         <div className="flex gap-3 items-center text-lg font-bold pr-7">
-        <NavLink to="/sidebar" className="px-2 rounded-lg hover:bg-white text-black transition">
-          Sign up
-        </NavLink>         
+          <NavLink to="/dashboard" className="px-2 rounded-lg hover:bg-white text-black transition">
+            Sign up
+          </NavLink>         
 
           <a href="#" className="px-2 rounded-lg hover:bg-white text-black transition">Login</a>
         </div>
@@ -49,9 +49,8 @@ function Header() {
         </section>
       )}
 
-       {/*Img*/}
-       <img src="/index/header_rectangle.svg" alt="white rectangle" className="relative scale-107 bottom-[-25px] pl-27" />
-
+      {/* Img */}
+      <img src="/index/header_rectangle.svg" alt="white rectangle" className="relative scale-107 bottom-[-25px] pl-27" />
     </header> 
   );
 }
