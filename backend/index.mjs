@@ -1,6 +1,6 @@
 import express from "express";
 import cors from 'cors';
-import compagnyRoute from "./Routes/compagny.mjs";
+import compagnyRoute from "./Routes/company.mjs";
 import contactRoute from "./Routes/contact.mjs";
 import invoiceRoute from "./Routes/invoice.mjs";
 import logInRoute from "./Routes/logIn.mjs";
@@ -21,7 +21,7 @@ const app = express();
 app.use(express.json());
 app.use(cors()); // Autorise le front à appeler l'API
 
-app.use("/cogip/api/compagny",compagnyRoute);
+app.use("/cogip/api/company",compagnyRoute);
 app.use("/cogip/api/contact",contactRoute);
 app.use("/cogip/api/invoice",invoiceRoute);
 app.use("/cogip/api/login",logInRoute);
