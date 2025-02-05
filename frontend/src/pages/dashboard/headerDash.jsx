@@ -12,15 +12,20 @@ function HeaderDash() {
     //pour switch de page
     const subPath = location.pathname.replace("/dashboard", "") || "/";
     let content;
+    let pageName = "";
+
     switch (subPath) {
         case "/contactsDash":
             content = <ContactsDash />;
+            pageName = "Contacts";
             break;
         case "/companiesDash":
             content = <CompaniesDash />;
+            pageName = "Companies";
             break;
         case "/invoicesDash":
             content = <InvoicesDash />;
+            pageName = "Invoices";
             break;
         default: // Page par défaut
             content = <Dashboard />; 
@@ -29,7 +34,7 @@ function HeaderDash() {
     return (
         <div className="flex-1 p-8 bg-indigo-100 relative">
             <h3 className="text-2xl ml-8 font-bold">Dashboard</h3>
-            <p className="text-gray-500 ml-8 ">dashboard/</p>
+            <p className="text-gray-500 ml-8 ">dashboard/{pageName}</p>
 
             <section className="m-8 bg-cogip-blue text-white rounded-lg p-15 relative">
                 <img 
