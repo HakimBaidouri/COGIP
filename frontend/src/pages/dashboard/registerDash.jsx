@@ -2,7 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function RegisterDash() {
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [role_id, setRoleId] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
@@ -12,13 +15,15 @@ function RegisterDash() {
     e.preventDefault();
     setError(null);
 
+    const roleIdAsInt = parseInt(role_id);
+
     try {
-      const response = await fetch("http://localhost:3001/cogip/api/login", {
+      const response = await fetch("http://localhost:3001/cogip/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ first_name, last_name, email, role_id: roleIdAsInt, password }),
       });
 
       const data = await response.json();
@@ -27,7 +32,7 @@ function RegisterDash() {
         throw new Error(data.message || "Erreur de connexion");
       }
 
-      navigate("/dashboard");
+      navigate("/loginDash");
     } catch (err) {
       setError(err.message);
     }
@@ -50,7 +55,67 @@ function RegisterDash() {
 
             {error && <p className="text-red-500 text-center">{error}</p>}
 
-            <div>
+            <div className="flex justify-between">
+              <div>
+                <label className="block font-medium text-sm text-gray-700" htmlFor="first_name">
+                  Firstname
+                </label>
+                <input
+                  type="text"
+                  name="first_name"
+                  placeholder="Firstname"
+                  value={first_name}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  className="w-full rounded-md py-2.5 px-4 border text-sm outline-[#f84525]"
+                />
+              </div>
+
+              <div>
+                <label className="block font-medium text-sm text-gray-700" htmlFor="last_name">
+                  Lastname
+                </label>
+                <input
+                  type="text"
+                  name="last_name"
+                  placeholder="Lastname"
+                  value={last_name}
+                  onChange={(e) => setLastName(e.target.value)}
+                  className="w-full rounded-md py-2.5 px-4 border text-sm outline-[#f84525]"
+                />
+              </div>
+            </div>
+
+            <div className="flex justify-between">
+              <div className="mt-4">
+                <label className="block font-medium text-sm text-gray-700" htmlFor="email">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full rounded-md py-2.5 px-4 border text-sm outline-[#f84525]"
+                />
+              </div>
+
+              <div className="mt-4">
+                <label className="block font-medium text-sm text-gray-700" htmlFor="role_id">
+                  Role ID
+                </label>
+                <input
+                  type="number"
+                  name="role_id"
+                  placeholder="Role ID"
+                  value={role_id}
+                  onChange={(e) => setRoleId(e.target.value)}
+                  className="w-full rounded-md py-2.5 px-4 border text-sm outline-[#f84525]"
+                />
+              </div>
+            </div>
+
+            {/* <div className="mt-4">
               <label className="block font-medium text-sm text-gray-700" htmlFor="email">
                 Email
               </label>
@@ -62,7 +127,7 @@ function RegisterDash() {
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full rounded-md py-2.5 px-4 border text-sm outline-[#f84525]"
               />
-            </div>
+            </div> */}
 
             <div className="mt-4">
               <label className="block font-medium text-sm text-gray-700" htmlFor="password">
