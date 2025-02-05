@@ -1,7 +1,36 @@
 import { useState } from "react";
 
-function loginDash() {
+function LoginDash() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(null);
+
+    try {
+      const response = await fetch("http://localhost:3001/", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Erreur de connexion");
+      }
+
+      alert("Connexion réussie");
+      // Rediriger ou gérer la session ici
+    } catch (err) {
+      setError(err.message);
+    }
+  };
 
   return (
     <div className="font-sans text-gray-900 antialiased">
@@ -13,16 +42,25 @@ function loginDash() {
         </div>
 
         <div className="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-          <form method="POST" action="/login">
+          <form onSubmit={handleSubmit}>
             <div className="py-8 text-center">
               <span className="text-2xl font-semibold">Log In</span>
             </div>
+
+            {error && <p className="text-red-500 text-center">{error}</p>}
 
             <div>
               <label className="block font-medium text-sm text-gray-700" htmlFor="email">
                 Email
               </label>
-              <input type="email" name="email" placeholder="Email" className="w-full rounded-md py-2.5 px-4 border text-sm outline-[#f84525]" />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full rounded-md py-2.5 px-4 border text-sm outline-[#f84525]"
+              />
             </div>
 
             <div className="mt-4">
@@ -35,6 +73,8 @@ function loginDash() {
                   type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                   autoComplete="current-password"
                   className="w-full rounded-md py-2.5 px-4 border text-sm outline-[#f84525]"
@@ -62,4 +102,4 @@ function loginDash() {
   );
 }
 
-export default loginDash;
+export default LoginDash;
