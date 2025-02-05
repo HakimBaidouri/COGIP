@@ -1,31 +1,20 @@
-function contactsDash(){
-    return(
-    <div>
-       
-        <section>
-            <p>New contact</p>
-        </section>
+import Form from "../../components/form.jsx"
 
-        <section>
-            <div>
-                <form action="" method="post">
+function contactsDash() {
+    return (
 
-                    {/* <label for="name"></label> */}
-                    <input type="text" name="name" id="name" placeholder="Name"/>
 
-                    {/* <label for="phone"></label> */}
-                    <input type="text" name="tva" id="tva" placeholder="TVA"/>
+        <Form
+            title={"New contact"}
+            option1={"name"}
+            option2={"tva"}
+            option3={"country"}
+            option1Type={"text"}
+            option2Type={"number"}
+            option3Type={"text"}
+        />
 
-                    {/* <label for="email"></label> */}
-                    <input type="text" name="country" id="country" placeholder="Country"/>
 
-                    <input type="submit" value="Save" name="saveBtn"/>
-
-                </form>
-            </div>
-        </section>
-        
-    </div>
     );
 }
 

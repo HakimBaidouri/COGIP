@@ -1,30 +1,20 @@
-function invoicesDash(){
-    return(
-    <div>
-        <section>
-            <p>New Invoice</p>
-        </section>
+import Form from "../../components/form.jsx"
 
-        <section>
-            <div>
-                <form action="" method="post">
+function invoicesDash() {
+    return (
 
-                    {/* <label for="reference"></label> */}
-                    <input type="text" name="reference" id="reference" placeholder="Reference"/>
 
-                    {/* <label for="price"></label> */}
-                    <input type="number" name="price" id="price" placeholder="Price"/>
+        <Form
+            title={"New Invoice"}
+            option1={"reference"}
+            option2={"price"}
+            option3={"company"}
+            option1Type={"text"}
+            option2Type={"number"}
+            option3Type={"text"}
+        />
 
-                    {/* <label for="company"></label> */}
-                    <input type="text" name="companyName" id="companyName" placeholder="Company Name"/>
 
-                    <input type="submit" value="Save" name="saveBtn"/>
-
-                </form>
-            </div>
-        </section>
-        
-    </div>
     );
 }
 
