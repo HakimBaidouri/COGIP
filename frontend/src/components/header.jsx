@@ -39,7 +39,7 @@ function Header() {
 
         <div className="flex gap-3 items-center text-lg font-bold pr-7">
           <a href="#" className="px-2 rounded-lg hover:bg-white text-black transition">
-            Sign up
+            <NavLink to="/registerDash">Sign Up</NavLink>
           </a>
           <a href="#" className="px-2 rounded-lg hover:bg-white text-black transition">
             <NavLink to="/loginDash">Login</NavLink>
