@@ -1,31 +1,45 @@
-// Datalist.jsx
-import { useState } from 'react';
-import Pagination from './pagination.jsx';
+import {useState} from 'react';
+import {Link} from "react-router-dom";
 
 export default function Datalist({
-    title = "default title",
-    nbre_rows,
-    columns,
-    decorationBar = false,
-    hideSearchBar = true,
-    hidePagination = true,
-    adminMode = false
-}) {
+                                     title = "default title",
+                                     nbre_rows,
+                                     columns,
+                                     dataType,
+                                     decorationBar = false,
+                                     hideSearchBar = true,
+                                     hidePagination = true,
+                                     adminMode = false
+                                 }) {
+    console.log({columns});
+
+    // Search
     const [searchQuery, setSearchQuery] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 10;
 
     const filteredRowIndexes = columns.length > 0
         ? columns[0].data.map((_, rowIndex) =>
-            columns[0].data[rowIndex]?.toLowerCase().includes(searchQuery.toLowerCase())
+            columns[0].data[rowIndex].toLowerCase().includes(searchQuery.toLowerCase()) // Rechercher uniquement dans le nom
         )
         : [];
 
+    // Debugging: Log filtered row indexes
+    console.log("Filtered Row Indexes:", filteredRowIndexes);
+
+    // Calcul du nombre de lignes après filtrage
     const filteredRowCount = filteredRowIndexes.filter(Boolean).length;
-    const paginatedRows = filteredRowIndexes
-        .map((isVisible, index) => (isVisible ? index : -1))
-        .filter(index => index !== -1)
-        .slice((currentPage - 1) * pageSize, currentPage * pageSize);
+
+    // Pagination
+    const paginatedRows = adminMode
+        ? filteredRowIndexes
+            .map((isVisible, index) => (isVisible ? index : -1)) // Suivi des indices des lignes visibles
+            .filter(index => index !== -1) // Supprimer les -1 du tableau de pagination
+            .slice(0, 5) // Limiter à 5 lignes en mode admin
+        : filteredRowIndexes
+            .map((isVisible, index) => (isVisible ? index : -1)) // Suivi des indices des lignes visibles
+            .filter(index => index !== -1) // Supprimer les -1 du tableau de pagination
+            .slice((currentPage - 1) * pageSize, currentPage * pageSize); // Récupérer les lignes de la page actuelle
 
     const totalPages = Math.ceil(filteredRowCount / pageSize);
 
