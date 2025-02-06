@@ -200,7 +200,6 @@ function Columns({columns, adminMode = false}) {
 
 function Rows({columns, filteredRowIndexes, adminMode, dataType}) {
     return filteredRowIndexes.map((isVisible, rowIndex) => {
-        if (!isVisible) return null; // Ignore les lignes non visibles
 
         const backgroundColor = rowIndex % 2 === 0 ? "bg-white" : "bg-gray-100";
         const rowClass = adminMode ? "text-left font-cogip-inter" : `text-left font-cogip-roboto font-semibold pl-3 ${backgroundColor}`;
