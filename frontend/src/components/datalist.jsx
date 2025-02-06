@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {Link} from "react-router-dom";
 
 export default function Datalist({
                                      title = "default title",
@@ -9,6 +10,9 @@ export default function Datalist({
                                      hidePagination = true,
                                      adminMode = false
                                  }) {
+
+    console.log({columns})
+
     // Search
     const [searchQuery, setSearchQuery] = useState("");
     // Pagination states
@@ -60,7 +64,7 @@ export default function Datalist({
                 <h2 className="w-full p-[30px] font-bold text-xl capitalize">{title}</h2>
                 <hr className="relative left-[30px] w-10/11 mb-[28px]"/>
 
-                <table className="relative left-[30px] w-10/11">
+                <table className="relative left-[30px] w-full">
                     <thead>
                     <Columns columns={adminColumns} adminMode={true}/>
                     </thead>
@@ -190,35 +194,49 @@ function Columns({columns, adminMode = false}) {
 }
 
 function Rows({columns, filteredRowIndexes, adminMode}) {
-
     if (adminMode === true) {
-
-        return filteredRowIndexes.map((i, rowIndex) => {  // Si la ligne ne correspond pas à la recherche, on la saute
-
+        return filteredRowIndexes.map((isVisible, rowIndex) => {
+            if (!isVisible) return null; // Ignore les lignes non visibles
 
             return (
-                <tr key={i} className={`text-left font-cogip-inter`}>
+                <tr key={rowIndex} className={`text-left font-cogip-inter`}>
                     {columns.map((col, index) => (
-                        <td key={index} className={index === 0 ? "w-1/3 h-16" : "w-1/3 h-16"}>{col.data[i]}</td> // Appliquer pl-8 uniquement à la première colonne
+                        <td key={index} className={index === 0 ? "w-1/3 h-16" : "w-1/3 h-16"}>
+                            {index === 0 ? (
+                                <Link to={`/company/${col.id[rowIndex]}`} className="text-blue-500 hover:underline">
+                                    {col.data[rowIndex]}
+                                </Link>
+                            ) : (
+                                col.data[rowIndex]
+                            )}
+                        </td>
                     ))}
                 </tr>
             );
         });
-
     } else {
-        return filteredRowIndexes.map((i, rowIndex) => {  // Si la ligne ne correspond pas à la recherche, on la saute
+        return filteredRowIndexes.map((isVisible, rowIndex) => {
+            if (!isVisible) return null; // Ignore les lignes non visibles
+
             const backgroundColor = rowIndex % 2 === 0 ? "bg-white" : "bg-gray-100";
 
             return (
-                <tr key={i} className={`text-left font-cogip-roboto font-semibold pl-3 ${backgroundColor}`}>
+                <tr key={rowIndex} className={`text-left font-cogip-roboto font-semibold pl-3 ${backgroundColor}`}>
                     {columns.map((col, index) => (
-                        <td key={index} className={index === 0 ? "pl-8 w-1/6 h-12" : "w-1/6 h-12"}>{col.data[i]}</td> // Appliquer pl-8 uniquement à la première colonne
+                        <td key={index} className={index === 0 ? "pl-8 w-1/6 h-12" : "w-1/6 h-12"}>
+                            {index === 0 ? (
+                                <Link to={`/company/${col.id[rowIndex]}`} className="text-blue-500 hover:underline">
+                                    {col.data[rowIndex]}
+                                </Link>
+                            ) : (
+                                col.data[rowIndex]
+                            )}
+                        </td>
                     ))}
                 </tr>
             );
         });
     }
-
 }
 
 function PaginationButton({onClick, disabled, active, symbol, children, className}) {
