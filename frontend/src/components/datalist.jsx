@@ -22,7 +22,7 @@ export default function Datalist({
     // Filter
     const filteredRowIndexes = columns.length > 0
         ? columns[0].data.map((_, rowIndex) =>
-            columns[0].data[rowIndex].toLowerCase().includes(searchQuery.toLowerCase()) // Rechercher uniquement dans le nom
+            columns[0].data[rowIndex]?.toLowerCase().includes(searchQuery.toLowerCase()) // Rechercher uniquement dans le nom
         )
         : [];
 
@@ -33,15 +33,11 @@ export default function Datalist({
     const filteredRowCount = filteredRowIndexes.filter(Boolean).length;
 
     // Pagination
-    const paginatedRows = adminMode
-        ? filteredRowIndexes
-            .map((isVisible, index) => (isVisible ? index : -1)) // Suivi des indices des lignes visibles
-            .filter(index => index !== -1) // Supprimer les -1 du tableau de pagination
-            .slice(0, 5) // Limiter à 5 lignes en mode admin
-        : filteredRowIndexes
-            .map((isVisible, index) => (isVisible ? index : -1)) // Suivi des indices des lignes visibles
-            .filter(index => index !== -1) // Supprimer les -1 du tableau de pagination
-            .slice((currentPage - 1) * pageSize, currentPage * pageSize); // Récupérer les lignes de la page actuelle
+    const paginatedRows = filteredRowIndexes
+        .map((isVisible, index) => (isVisible ? index : -1)) // Suivi des indices des lignes visibles
+        .filter(index => index !== -1) // Supprimer les -1 du tableau de pagination
+        .slice(adminMode ? 0 : (currentPage - 1) * pageSize, adminMode ? 5 : currentPage * pageSize
+        ); // Pagination
 
     const totalPages = Math.ceil(filteredRowCount / pageSize);
     // Handle page change
@@ -99,7 +95,7 @@ export default function Datalist({
 
                     {decorationBar && (
                         <span
-                            className="relative block h-7  w-55 bg-cogip yellow top-[-95px] left-[130px] z-[-1]"></span>
+                            className="relative block h-7 w-55 bg-cogip yellow top-[-95px] left-[130px] z-[-1]"></span>
                     )}
 
                     {!hideSearchBar && (
@@ -119,7 +115,14 @@ export default function Datalist({
                         <Columns columns={completeColumns}/>
                         </thead>
                         <tbody>
-                        <Rows columns={completeColumns} filteredRowIndexes={paginatedRows} dataType={dataType}/>
+                        <Rows
+                            columns={completeColumns.map(col => ({
+                                ...col,
+                                data: col.data.filter((_, index) => paginatedRows.includes(index))
+                            }))}
+                            filteredRowIndexes={paginatedRows}
+                            dataType={dataType}
+                        />
                         </tbody>
                     </table>
 
@@ -201,6 +204,7 @@ function Columns({columns, adminMode = false}) {
 function Rows({columns, filteredRowIndexes, adminMode, dataType}) {
     return filteredRowIndexes.map((isVisible, rowIndex) => {
 
+
         const backgroundColor = rowIndex % 2 === 0 ? "bg-white" : "bg-gray-100";
         const rowClass = adminMode ? "text-left font-cogip-inter" : `text-left font-cogip-roboto font-semibold pl-3 ${backgroundColor}`;
 
@@ -208,14 +212,14 @@ function Rows({columns, filteredRowIndexes, adminMode, dataType}) {
             <tr key={rowIndex} className={rowClass}>
                 {columns.map((col, index) => (
                     <td key={index}
-                        className={index === 0 ? (adminMode ? "w-1/3 h-16" : "pl-8 w-1/6 h-12") : "w-1/3 h-16"}>
+                        className={index === 0 ? (adminMode ? "w-1/6 h-16" : "pl-8 w-1/6 h-12") : "w-1/6 h-16"}>
                         {index === 0 ? (
                             dataType === "companies" ? (
-                                <Link to={`/company/${col.id[rowIndex]}`} className="text-blue-500 hover:underline">
+                                <Link to={`/company/${col.id[rowIndex]}`} className="underline underline-offset-2">
                                     {col.data[rowIndex]}
                                 </Link>
                             ) : dataType === 'contacts' ? (
-                                <Link to={`/contact/${col.id[rowIndex]}`} className="text-blue-500 hover:underline">
+                                <Link to={`/contact/${col.id[rowIndex]}`} className="underline underline-offset-2">
                                     {col.data[rowIndex]}
                                 </Link>
                             ) : (
