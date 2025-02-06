@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 function Footer() {
+
     return (
       <footer>
         <div className="container mx-auto px-15 font-cogip-inter">

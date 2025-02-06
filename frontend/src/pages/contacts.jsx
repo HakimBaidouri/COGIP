@@ -18,10 +18,11 @@ function Companies() {
         <div>
             <Datalist
                 title={"All contacts"}
-                nbre_rows={columnsLarge[0].data.length}
                 columns={columnsLarge}
                 decorationBar={true}
-            />           
+                hidePagination={false}
+                hideSearchBar={false}
+            />
         </div>
     );
 }
