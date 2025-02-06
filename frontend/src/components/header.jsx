@@ -37,6 +37,7 @@ function Header() {
           </ul>
         </nav>
 
+        {/* ATTENTION JUSTE EN TEST LE NAVLINK avec dashboard */}
         <div className="flex gap-3 items-center text-lg font-bold pr-7">
           <NavLink to="/registerDash" className="px-2 rounded-lg hover:bg-white text-black transition">
             Sign up
