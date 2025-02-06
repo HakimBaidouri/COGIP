@@ -5,13 +5,13 @@ export default function Datalist({
                                      title = "default title",
                                      nbre_rows,
                                      columns,
+                                     dataType,
                                      decorationBar = false,
                                      hideSearchBar = true,
                                      hidePagination = true,
                                      adminMode = false
                                  }) {
-
-    console.log({columns})
+    console.log({columns});
 
     // Search
     const [searchQuery, setSearchQuery] = useState("");
@@ -22,17 +22,26 @@ export default function Datalist({
     // Filter
     const filteredRowIndexes = columns.length > 0
         ? columns[0].data.map((_, rowIndex) =>
-            columns[0].data[rowIndex]?.toLowerCase().includes(searchQuery.toLowerCase()) // Rechercher uniquement dans la première colonne
+            columns[0].data[rowIndex].toLowerCase().includes(searchQuery.toLowerCase()) // Rechercher uniquement dans le nom
         )
         : [];
+
+    // Debugging: Log filtered row indexes
+    console.log("Filtered Row Indexes:", filteredRowIndexes);
+
     // Calcul du nombre de lignes après filtrage
     const filteredRowCount = filteredRowIndexes.filter(Boolean).length;
 
     // Pagination
-    const paginatedRows = filteredRowIndexes
-        .map((isVisible, index) => (isVisible ? index : -1)) // Suivi des indices des lignes visibles
-        .filter(index => index !== -1) // Supprimer les -1 du tableau de pagination
-        .slice((currentPage - 1) * pageSize, currentPage * pageSize); // Récupérer les lignes de la page actuelle
+    const paginatedRows = adminMode
+        ? filteredRowIndexes
+            .map((isVisible, index) => (isVisible ? index : -1)) // Suivi des indices des lignes visibles
+            .filter(index => index !== -1) // Supprimer les -1 du tableau de pagination
+            .slice(0, 5) // Limiter à 5 lignes en mode admin
+        : filteredRowIndexes
+            .map((isVisible, index) => (isVisible ? index : -1)) // Suivi des indices des lignes visibles
+            .filter(index => index !== -1) // Supprimer les -1 du tableau de pagination
+            .slice((currentPage - 1) * pageSize, currentPage * pageSize); // Récupérer les lignes de la page actuelle
 
     const totalPages = Math.ceil(filteredRowCount / pageSize);
     // Handle page change
@@ -66,11 +75,18 @@ export default function Datalist({
 
                 <table className="relative left-[30px] w-full">
                     <thead>
-                    <Columns columns={adminColumns} adminMode={true}/>
+                    <Columns
+                        columns={adminColumns}
+                        adminMode={true}
+                    />
                     </thead>
 
                     <tbody>
-                    <Rows columns={adminColumns} filteredRowIndexes={paginatedRows} adminMode={true}/>
+                    <Rows columns={adminColumns}
+                          filteredRowIndexes={paginatedRows}
+                          adminMode={true}
+                          dataType={dataType}
+                    />
                     </tbody>
                 </table>
             </section>
@@ -83,7 +99,7 @@ export default function Datalist({
 
                     {decorationBar && (
                         <span
-                            className="relative block h-7  w-55 bg-cogip-yellow top-[-95px] left-[130px] z-[-1]"></span>
+                            className="relative block h-7  w-55 bg-cogip yellow top-[-95px] left-[130px] z-[-1]"></span>
                     )}
 
                     {!hideSearchBar && (
@@ -98,13 +114,12 @@ export default function Datalist({
                         </div>
                     )}
 
-
                     <table className="w-full">
                         <thead>
                         <Columns columns={completeColumns}/>
                         </thead>
                         <tbody>
-                        <Rows columns={completeColumns} filteredRowIndexes={paginatedRows}/>
+                        <Rows columns={completeColumns} filteredRowIndexes={paginatedRows} dataType={dataType}/>
                         </tbody>
                     </table>
 
@@ -161,82 +176,60 @@ export default function Datalist({
             </section>
         );
     }
-
 }
 
-
 function Columns({columns, adminMode = false}) {
-
     if (adminMode === true) {
-
         return (
-
             <tr className="text-left font-cogip-inter capitalize font-semibold">
                 {columns.map((col, index) => (
-                    <th key={index} className={index === 0 ? "w-1/3" : "w-1/3"}>{col.name}</th> // Appliquer pl-8 uniquement à la première colonne
+                    <th key={index} className={index === 0 ? "w-1/3" : "w-1/3"}>{col.name}</th>
                 ))}
             </tr>
-
-        )
-
+        );
     } else {
         return (
-
             <tr className="text-left font-cogip-roboto bg-cogip-yellow h-12 capitalize font-semibold">
                 {columns.map((col, index) => (
-                    <th key={index} className={index === 0 ? "pl-8 w-1/6" : "w-1/6"}>{col.name}</th> // Appliquer pl-8 uniquement à la première colonne
+                    <th key={index} className={index === 0 ? "pl-8 w-1/6" : "w-1/6"}>{col.name}</th>
                 ))}
             </tr>
         );
     }
-
-
 }
 
-function Rows({columns, filteredRowIndexes, adminMode}) {
-    if (adminMode === true) {
-        return filteredRowIndexes.map((isVisible, rowIndex) => {
-            if (!isVisible) return null; // Ignore les lignes non visibles
+function Rows({columns, filteredRowIndexes, adminMode, dataType}) {
+    return filteredRowIndexes.map((isVisible, rowIndex) => {
+        if (!isVisible) return null; // Ignore les lignes non visibles
 
-            return (
-                <tr key={rowIndex} className={`text-left font-cogip-inter`}>
-                    {columns.map((col, index) => (
-                        <td key={index} className={index === 0 ? "w-1/3 h-16" : "w-1/3 h-16"}>
-                            {index === 0 ? (
+        const backgroundColor = rowIndex % 2 === 0 ? "bg-white" : "bg-gray-100";
+        const rowClass = adminMode ? "text-left font-cogip-inter" : `text-left font-cogip-roboto font-semibold pl-3 ${backgroundColor}`;
+
+        return (
+            <tr key={rowIndex} className={rowClass}>
+                {columns.map((col, index) => (
+                    <td key={index}
+                        className={index === 0 ? (adminMode ? "w-1/3 h-16" : "pl-8 w-1/6 h-12") : "w-1/3 h-16"}>
+                        {index === 0 ? (
+                            dataType === "companies" ? (
                                 <Link to={`/company/${col.id[rowIndex]}`} className="text-blue-500 hover:underline">
                                     {col.data[rowIndex]}
                                 </Link>
-                            ) : (
-                                col.data[rowIndex]
-                            )}
-                        </td>
-                    ))}
-                </tr>
-            );
-        });
-    } else {
-        return filteredRowIndexes.map((isVisible, rowIndex) => {
-            if (!isVisible) return null; // Ignore les lignes non visibles
-
-            const backgroundColor = rowIndex % 2 === 0 ? "bg-white" : "bg-gray-100";
-
-            return (
-                <tr key={rowIndex} className={`text-left font-cogip-roboto font-semibold pl-3 ${backgroundColor}`}>
-                    {columns.map((col, index) => (
-                        <td key={index} className={index === 0 ? "pl-8 w-1/6 h-12" : "w-1/6 h-12"}>
-                            {index === 0 ? (
-                                <Link to={`/company/${col.id[rowIndex]}`} className="text-blue-500 hover:underline">
+                            ) : dataType === 'contacts' ? (
+                                <Link to={`/contact/${col.id[rowIndex]}`} className="text-blue-500 hover:underline">
                                     {col.data[rowIndex]}
                                 </Link>
                             ) : (
-                                col.data[rowIndex]
-                            )}
-                        </td>
-                    ))}
-                </tr>
-            );
-        });
-    }
+                                col.data[rowIndex] // Pas de lien pour les factures
+                            )
+                        ) : (
+                            col.data[rowIndex]
+                        )}
+                    </td>
+                ))}
+            </tr>
+        );
+    });
 }
 
 function PaginationButton({onClick, disabled, active, symbol, children, className}) {
@@ -247,7 +240,7 @@ function PaginationButton({onClick, disabled, active, symbol, children, classNam
             className={`px-4 py-2 ${active ? 'border-cogip-yellow text-cogip-yellow' : 'text-black-200'} 
                         ${disabled ? 'border border-gray-300' : 'border-cogip-yellow'} 
                         rounded-sm 
-                        focus:border border-cogip-yellow focus:text-cogip-yellow transition  ${className}`}
+                        focus:border border-cogip-yellow focus:text-cogip-yellow transition ${className}`}
         >
             {symbol || children}
         </button>
