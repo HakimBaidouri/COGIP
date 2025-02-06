@@ -202,6 +202,9 @@ function Columns({columns, adminMode = false}) {
 }
 
 function Rows({columns, filteredRowIndexes, adminMode, dataType}) {
+
+    console.log({columns});
+
     return filteredRowIndexes.map((isVisible, rowIndex) => {
 
 
