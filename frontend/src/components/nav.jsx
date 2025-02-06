@@ -4,6 +4,9 @@ import Home from "../pages/home.jsx";
 import Invoices from "../pages/invoices.jsx";
 import Contacts from "../pages/contacts.jsx";
 import Companies from "../pages/companies.jsx";
+import Dashboard from "../pages/dashboard/dashboard.jsx";
+import Login from "../pages/dashboard/loginDash.jsx";
+import Register from "../pages/dashboard/registerDash.jsx";
 
 import Sidebar from "../pages/dashboard/sidebar.jsx";
 import HeaderDash from "../pages/dashboard/headerDash.jsx";
