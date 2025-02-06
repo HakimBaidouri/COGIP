@@ -39,11 +39,15 @@ function Header() {
 
         {/* ATTENTION JUSTE EN TEST LE NAVLINK avec dashboard */}
         <div className="flex gap-3 items-center text-lg font-bold pr-7">
-          <NavLink to="/dashboard" className="px-2 rounded-lg hover:bg-white text-black transition">
+          <NavLink to="/registerDash" className="px-2 rounded-lg hover:bg-white text-black transition">
             Sign up
-          </NavLink>         
+          </NavLink>
 
-          <a href="#" className="px-2 rounded-lg hover:bg-white text-black transition">Login</a>
+          <a href="#" className="px-2 rounded-lg hover:bg-white text-black transition">
+            <NavLink to="/loginDash" className="px-2 rounded-lg hover:bg-white text-black transition">
+              Login
+            </NavLink>
+          </a>
         </div>
       </div>
 
@@ -59,7 +63,7 @@ function Header() {
 
       {/* Img */}
       <img src="/index/header_rectangle.svg" alt="white rectangle" className="relative scale-107 bottom-[-25px] pl-27" />
-    </header> 
+    </header>
   );
 }
 
