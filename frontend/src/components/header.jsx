@@ -3,11 +3,6 @@ import { NavLink, useLocation } from "react-router-dom";
 function Header() {
   const location = useLocation(); 
 
-  // ATTENTION A MODIFIER AVEC LOGIN
-  if (location.pathname === "/dashboard" || location.pathname.startsWith("/dashboard")) {
-    return null; // Ne rien afficher si on est sur la page de login ou sur une page dashboard
-  }
-
   return (
     <header className="w-screen font-cogip-roboto font-black bg-cogip-yellow pt-15 overflow-hidden">
       <div className="container mx-auto flex items-center justify-between pl-1">
