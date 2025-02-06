@@ -7,7 +7,7 @@ function Sidebar() {
   return (
     <div className="flex sticky top-0 h-screen">
       {/* SIDEBAR */}
-      <div className="w-64 bg-white shadow-md  flex flex-col justify-between p-6">
+      <div className="w-64 bg-white shadow-md flex flex-col justify-between p-6">
         {/* Profil - BDD connexion */}
         <div className="text-center">
           <img
@@ -15,11 +15,11 @@ function Sidebar() {
             alt="Profile"
             className="w-22 h-22 rounded-full mx-auto text-base bg-cogip-blue"
           />
-          <h2 className="mt-2 font-bold font-cogip-roboto text-2xl">{firstname}<br />{lastname}</h2>
+          <h2 className="mt-2 font-bold font-cogip-roboto text-2xl pb-3 border-b-1">{firstname}<br />{lastname}</h2>
         </div>
 
         {/* Navigation */}
-        <nav className="font-cogip-inter mt-6 ml-4 text-xl">
+        <nav className="font-cogip-inter mt-4 ml-4 text-xl">
           <ul className="space-y-5 -translate-y-30">
             <li>
               <NavLink to="/dashboard" end className={({ isActive }) =>
@@ -57,7 +57,7 @@ function Sidebar() {
         </nav>
 
         {/* Logout - BDD */}
-        <div className="flex items-center justify-between text-xl border-t border-gray-300 pt-3 font-cogip-inter">
+        <div className="flex items-center justify-between text-xl border-t-1 pt-3 font-cogip-inter">
           <img
             src="/path-to-image.jpg" 
             alt="Profile"
