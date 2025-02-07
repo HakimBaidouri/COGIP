@@ -1,116 +1,24 @@
-import Datalist from "../components/datalist.jsx";
-
-const columnsCompanies = [
-    {
-
-        name: "Name",
-        id: Array.from({length: 100}, (_, i) => i + 1),
-        data: Array.from({length: 100}, (_, i) => `Company ${i + 1}`)
-    },
-    {
-        name: "VAT",
-        data: Array.from({length: 100}, (_, i) => `VAT${i + 100000000}`)
-    },
-    {
-        name: "Country",
-        data: Array.from({length: 100}, (_, i) => {
-            const countries = ["France", "Germany", "Spain", "Italy", "UK", "USA", "Canada", "Australia", "Netherlands", "Belgium"];
-            return countries[i % countries.length];
-        })
-    },
-    {
-        name: "Type",
-        data: Array.from({length: 100}, (_, i) => `Type ${i % 3 + 1}`)
-    },
-    {
-        name: "Status",
-        data: Array.from({length: 100}, (_, i) => (i % 2 === 0 ? "Active" : "Inactive"))
-    }
-];
-const columnsContacts = [
-    {
-
-        name: "Name",
-        id: Array.from({length: 100}, (_, i) => i + 1),
-        data: Array.from({length: 100}, (_, i) => `Contact ${i + 1}`)
-    },
-    {
-        name: "VAT",
-        data: Array.from({length: 100}, (_, i) => `VAT${i + 100000000}`)
-    },
-    {
-        name: "Country",
-        data: Array.from({length: 100}, (_, i) => {
-            const countries = ["France", "Germany", "Spain", "Italy", "UK", "USA", "Canada", "Australia", "Netherlands", "Belgium"];
-            return countries[i % countries.length];
-        })
-    },
-    {
-        name: "Type",
-        data: Array.from({length: 100}, (_, i) => `Type ${i % 3 + 1}`)
-    },
-    {
-        name: "Status",
-        data: Array.from({length: 100}, (_, i) => (i % 2 === 0 ? "Active" : "Inactive"))
-    }
-];
-const columnsInvoices = [
-    {
-
-        name: "Name",
-        id: Array.from({length: 100}, (_, i) => i + 1),
-        data: Array.from({length: 100}, (_, i) => `Invoice ${i + 1}`)
-    },
-    {
-        name: "VAT",
-        data: Array.from({length: 100}, (_, i) => `VAT${i + 100000000}`)
-    },
-    {
-        name: "Country",
-        data: Array.from({length: 100}, (_, i) => {
-            const countries = ["France", "Germany", "Spain", "Italy", "UK", "USA", "Canada", "Australia", "Netherlands", "Belgium"];
-            return countries[i % countries.length];
-        })
-    },
-    {
-        name: "Type",
-        data: Array.from({length: 100}, (_, i) => `Type ${i % 3 + 1}`)
-    },
-    {
-        name: "Status",
-        data: Array.from({length: 100}, (_, i) => (i % 2 === 0 ? "Active" : "Inactive"))
-    }
-];
+import ContactsGet from "../components/queries/contactsGet.jsx";
+import CompaniesGet from "../components/queries/companiesGet.jsx";
+import InvoicesGet from "../components/queries/invoicesGet.jsx";
 
 function Home() {
     return (
         <div className="w-screen overflow-hidden">
 
-            <Datalist
-                title={"last invoices"}
-                columns={columnsInvoices}
-                dataType={"invoices"}
-            />
+            <InvoicesGet/>
 
             <div className="relative">
                 <img src="/index/notepad.png" alt="" className="absolute right-0"/>
             </div>
 
-            <Datalist
-                title={"last contacts"}
-                columns={columnsContacts}
-                dataType={"contacts"}
-            />
+            <ContactsGet/>
 
             <div className="relative">
                 <img src="/index/bulb.png" alt="" className="absolute left-0"/>
             </div>
 
-            <Datalist
-                title={"last companies"}
-                columns={columnsCompanies}
-                dataType={"companies"}
-            />
+            <CompaniesGet/>
 
             <section
                 className="h-[550px] w-screen relative overflow-hidden">
