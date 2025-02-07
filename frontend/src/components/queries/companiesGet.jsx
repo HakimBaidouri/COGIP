@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import Datalist from "../datalist.jsx";
 
 const CompaniesList = () => {
     const [columnsLarge, setColumnsLarge] = useState([]);
@@ -23,7 +24,7 @@ const CompaniesList = () => {
                 const transformedData = [
                     {
                         name: "Name",
-                        id: companies.map((_, index) => index + 1),
+                        id: companies.map(company => company.id),
                         data: companies.map(company => company.name) // Assurez-vous que 'name' est une clé valide
                     },
                     {
@@ -39,8 +40,8 @@ const CompaniesList = () => {
                         data: companies.map(company => company.type) // Assurez-vous que 'type' est une clé valide
                     },
                     {
-                        name: "Date",
-                        data: companies.map(company => company.date) // Assurez-vous que 'date' est une clé valide
+                        name: "Created_at",
+                        data: companies.map(company => company.created_at) // Assurez-vous que 'date' est une clé valide
                     }
                 ];
 
@@ -64,10 +65,17 @@ const CompaniesList = () => {
     }
 
     return (
-        <div>
-            <h1>Liste des entreprises</h1>
-            <pre>{JSON.stringify(columnsLarge, null, 2)}</pre>
-        </div>
+
+        <Datalist
+            title={"All companies"}
+            columns={columnsLarge}
+            dataType="companies"
+            decorationBar={true}
+            hidePagination={false}
+            hideSearchBar={false}
+        />
+
+
     );
 };
 

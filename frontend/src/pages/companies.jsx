@@ -9,7 +9,7 @@ function Companies() {
         // <div>
         //     <Datalist
         //         title={"All companies"}
-        //         columns={columnsLarge}
+        //         columns={"CompaniesGet"}
         //         dataType="companies"
         //         decorationBar={true}
         //         hidePagination={false}
