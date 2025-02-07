@@ -9,8 +9,8 @@ import Register from "../pages/dashboard/registerDash.jsx";
 
 import Sidebar from "../pages/dashboard/sidebar.jsx";
 import HeaderDash from "../pages/dashboard/headerDash.jsx";
-import ShowCompany from "../pages/showCompany.jsx";
 import ContactDetails from "./queries/singleContactGet.jsx";
+import CompanyDetails from "./queries/singleCompanyGet.jsx";
 
 function Nav() {
     return (
@@ -21,7 +21,7 @@ function Nav() {
             <Route path="/companies" element={<Companies/>}/>
             <Route path="/loginDash" element={<Login/>}/>
             <Route path="/registerDash" element={<Register/>}/>
-            <Route path="/companies/:id" element={<ShowCompany/>}/>
+            <Route path="/companies/:id" element={<CompanyDetails/>}/>
             <Route path="/contacts/:id" element={<ContactDetails/>}/>
             {/* Route Dashboard : Sidebar + HeaderDash */}
             <Route

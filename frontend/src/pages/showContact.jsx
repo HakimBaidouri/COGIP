@@ -4,7 +4,7 @@ function ShowContact({contact}) {
 
         <section className={"px-30 py-10 grid grid-cols-2 w-full overflow-hidden"}>
 
-            <div className="col-auto w-full">{/* BDD */}
+            <div className="col-auto w-full">
                 <h2 className="font-black font-cogip-inter text-5xl capitalize mb-20">{contact.name}</h2>
 
                 <span className="relative block h-7 w-100 bg-cogip-yellow top-[-100px] left-10 z-[-1]"></span>
