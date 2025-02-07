@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Datalist from "../datalist.jsx";
 
-const CompaniesList = () => {
+const ContactsList = (props) => {
     const [columnsLarge, setColumnsLarge] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -70,16 +70,17 @@ const CompaniesList = () => {
     return (
 
         <Datalist
-            title={"All contacts"}
+            title={props.title || "All contacts"}
             columns={columnsLarge}
-            dataType="contacts"
-            decorationBar={true}
-            hidePagination={false}
-            hideSearchBar={false}
+            dataType={props.dataType || "contacts"}
+            decorationBar={props.decorationBar !== undefined ? props.decorationBar : false}
+            hidePagination={props.hidePagination !== undefined ? props.hidePagination : true}
+            hideSearchBar={props.hideSearchBar !== undefined ? props.hideSearchBar : true}
+            adminMode={props.adminMode !== undefined ? props.adminMode : false}
         />
 
 
     );
 };
 
-export default CompaniesList;
+export default ContactsList;

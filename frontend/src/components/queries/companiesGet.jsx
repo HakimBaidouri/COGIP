@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Datalist from "../datalist.jsx";
 
-const CompaniesList = () => {
+const CompaniesList = (props) => {
     const [columnsLarge, setColumnsLarge] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -64,21 +64,19 @@ const CompaniesList = () => {
     }
 
     if (error) {
-        return <div>Erreur : {error}</ div>;
+        return <div>Erreur : {error}</div>;
     }
 
     return (
-
         <Datalist
-            title={"All companies"}
+            title={props.title || "All companies"}
             columns={columnsLarge}
-            dataType="companies"
-            decorationBar={true}
-            hidePagination={false}
-            hideSearchBar={false}
+            dataType={props.dataType || "companies"}
+            decorationBar={props.decorationBar !== undefined ? props.decorationBar : false}
+            hidePagination={props.hidePagination !== undefined ? props.hidePagination : true}
+            hideSearchBar={props.hideSearchBar !== undefined ? props.hideSearchBar : true}
+            adminMode={props.adminMode !== undefined ? props.adminMode : false}
         />
-
-
     );
 };
 

@@ -1,11 +1,15 @@
-import CompaniesGet from "../components/queries/companiesGet.jsx";
-
+import CompaniesList from "../components/queries/CompaniesGet.jsx";
 
 function Companies() {
     return (
-        <CompaniesGet/>
+        <div>
+            <CompaniesList
+                decorationBar={true}
+                hidePagination={false}
+                hideSearchBar={false}
+            />
+        </div>
     );
 }
 
-export default Companies;
-  
+export default Companies

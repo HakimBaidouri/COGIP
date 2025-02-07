@@ -1,8 +1,12 @@
-import InvoicesGet from "../components/queries/invoicesGet.jsx";
+import InvoicesList from "../components/queries/invoicesGet.jsx";
 
 function Invoices() {
     return (
-        <InvoicesGet/>
+        <InvoicesList
+            decorationBar={true}
+            hidePagination={false}
+            hideSearchBar={false}
+        />
     );
 }
 

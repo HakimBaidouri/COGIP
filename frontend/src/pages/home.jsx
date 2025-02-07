@@ -1,24 +1,30 @@
-import ContactsGet from "../components/queries/contactsGet.jsx";
-import CompaniesGet from "../components/queries/companiesGet.jsx";
-import InvoicesGet from "../components/queries/invoicesGet.jsx";
+import CompaniesList from "../components/queries/companiesGet.jsx";
+import InvoicesList from "../components/queries/invoicesGet.jsx";
+import ContactsList from "../components/queries/contactsGet.jsx";
 
 function Home() {
     return (
         <div className="w-screen overflow-hidden">
 
-            <InvoicesGet/>
+            <InvoicesList
+                title={"last invoices"}
+            />
 
             <div className="relative">
                 <img src="/index/notepad.png" alt="" className="absolute right-0"/>
             </div>
 
-            <ContactsGet/>
+            <ContactsList
+                title={"Last contacts"}
+            />
 
             <div className="relative">
                 <img src="/index/bulb.png" alt="" className="absolute left-0"/>
             </div>
 
-            <CompaniesGet/>
+            <CompaniesList
+                title="last companies"
+            />
 
             <section
                 className="h-[550px] w-screen relative overflow-hidden">
