@@ -2,29 +2,26 @@ import Datalist from "../components/datalist.jsx";
 
 const columnsLarge = [
     {
+        name: "columnName",
+        id: [1, 2, 3],
+        data: ["Company 1", "company 2", "company 3"]
+    },
+    {
+        name: "columnName",
+        data: ["TVA 1", "TVA 2", "TVA 3"]
+    },
+    {
+        name: "ColumnName",
+        data: ["United States", "France", "United States"]
 
-        name: "Name",
-        id: Array.from({length: 100}, (_, i) => i + 1),
-        data: Array.from({length: 100}, (_, i) => `Company ${i + 1}`)
     },
     {
-        name: "VAT",
-        data: Array.from({length: 100}, (_, i) => `VAT${i + 100000000}`)
+        name: "ColumnName",
+        data: ["Supplier", "Client", "Supplier"]
     },
     {
-        name: "Country",
-        data: Array.from({length: 100}, (_, i) => {
-            const countries = ["France", "Germany", "Spain", "Italy", "UK", "USA", "Canada", "Australia", "Netherlands", "Belgium"];
-            return countries[i % countries.length];
-        })
-    },
-    {
-        name: "Type",
-        data: Array.from({length: 100}, (_, i) => `Type ${i % 3 + 1}`)
-    },
-    {
-        name: "Status",
-        data: Array.from({length: 100}, (_, i) => (i % 2 === 0 ? "Active" : "Inactive"))
+        name: "ColumnName",
+        data: ["25/09/2020", "25/09/2020", "25/09/2020"]
     }
 ];
 

@@ -5,7 +5,6 @@ import Pagination from "./pagination";
 
 export default function Datalist({
                                      title = "default title",
-                                     nbre_rows,
                                      columns,
                                      dataType,
                                      decorationBar = false,
