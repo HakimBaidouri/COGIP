@@ -34,7 +34,7 @@ function Companies() {
             <Datalist
                 title={"All companies"}
                 columns={columnsLarge}
-                dataType={"companies"}
+                dataType="companies"
                 decorationBar={true}
                 hidePagination={false}
                 hideSearchBar={false}
