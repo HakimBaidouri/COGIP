@@ -1,5 +1,6 @@
 import ContactsGet from "../components/queries/contactsGet.jsx";
 import CompaniesGet from "../components/queries/companiesGet.jsx";
+import InvoicesGet from "../components/queries/invoicesGet.jsx";
 
 function Home() {
     return (
