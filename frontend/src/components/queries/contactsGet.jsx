@@ -7,42 +7,42 @@ const CompaniesList = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchCompanies = async () => {
+        const fetchContacts = async () => {
             try {
-                const response = await fetch('http://localhost:3001/cogip/api/company'); // Modifiez l'URL ici
+                const response = await fetch('http://localhost:3001/cogip/api/contact'); // Modifiez l'URL ici
                 if (!response.ok) {
-                    throw new Error('Erreur lors de la récupération des entreprises');
+                    throw new Error('Erreur lors de la récupération des contacts');
                 }
-                const companies = await response.json();
+                const contacts = await response.json();
 
-                console.log(companies); // Vérifiez la réponse ici
+                console.log(contacts);
 
-                if (!Array.isArray(companies)) {
+                if (!Array.isArray(contacts)) {
                     throw new Error('La réponse de l\'API n\'est pas un tableau');
                 }
 
                 const transformedData = [
                     {
                         name: "Name",
-                        id: companies.map(company => company.id),
-                        data: companies.map(company => company.name) // Assurez-vous que 'name' est une clé valide
+                        id: contacts.map((contact) => contact.id),
+                        data: contacts.map((contact) => contact.contact_name)
                     },
                     {
-                        name: "TVA",
-                        data: companies.map(company => company.tva) // Assurez-vous que 'tva' est une clé valide
+                        name: "phone",
+                        data: contacts.map((contact) => contact.phone)
                     },
                     {
-                        name: "Country",
-                        data: companies.map(company => company.country) // Assurez-vous que 'country' est une clé valide
+                        name: "mail",
+                        data: contacts.map((contact) => contact.email)
                     },
                     {
-                        name: "Type",
-                        data: companies.map(company => company.type) // Assurez-vous que 'type' est une clé valide
+                        name: "company",
+                        data: contacts.map((contact) => contact.company_name)
                     },
                     {
                         name: "Created_at",
-                        data: companies.map(company => {
-                            const date = new Date(company.created_at);
+                        data: contacts.map((contact) => {
+                            const date = new Date(contact.created_at);
                             return date.toLocaleDateString('fr-FR');
                         })
                     }
@@ -56,7 +56,7 @@ const CompaniesList = () => {
             }
         };
 
-        fetchCompanies();
+        fetchContacts();
     }, []);
 
     if (loading) {
@@ -70,9 +70,9 @@ const CompaniesList = () => {
     return (
 
         <Datalist
-            title={"All companies"}
+            title={"All contacts"}
             columns={columnsLarge}
-            dataType="companies"
+            dataType="contacts"
             decorationBar={true}
             hidePagination={false}
             hideSearchBar={false}
