@@ -1,91 +1,11 @@
-import Datalist from "../../components/datalist.jsx";
+import CompaniesList from "../../components/queries/companiesGet.jsx";
+import ContactsList from "../../components/queries/contactsGet.jsx";
+import InvoicesList from "../../components/queries/invoicesGet.jsx";
 
 let nbre_invoices = 235
 let nbre_contacts = 156
 let nbre_companies = 987
 
-
-const columnsCompanies = [
-    {
-
-        name: "Name",
-        id: Array.from({length: 100}, (_, i) => i + 1),
-        data: Array.from({length: 100}, (_, i) => `Company ${i + 1}`)
-    },
-    {
-        name: "VAT",
-        data: Array.from({length: 100}, (_, i) => `VAT${i + 100000000}`)
-    },
-    {
-        name: "Country",
-        data: Array.from({length: 100}, (_, i) => {
-            const countries = ["France", "Germany", "Spain", "Italy", "UK", "USA", "Canada", "Australia", "Netherlands", "Belgium"];
-            return countries[i % countries.length];
-        })
-    },
-    {
-        name: "Type",
-        data: Array.from({length: 100}, (_, i) => `Type ${i % 3 + 1}`)
-    },
-    {
-        name: "Status",
-        data: Array.from({length: 100}, (_, i) => (i % 2 === 0 ? "Active" : "Inactive"))
-    }
-];
-const columnsContacts = [
-    {
-
-        name: "Name",
-        id: Array.from({length: 100}, (_, i) => i + 1),
-        data: Array.from({length: 100}, (_, i) => `Contact ${i + 1}`)
-    },
-    {
-        name: "VAT",
-        data: Array.from({length: 100}, (_, i) => `VAT${i + 100000000}`)
-    },
-    {
-        name: "Country",
-        data: Array.from({length: 100}, (_, i) => {
-            const countries = ["France", "Germany", "Spain", "Italy", "UK", "USA", "Canada", "Australia", "Netherlands", "Belgium"];
-            return countries[i % countries.length];
-        })
-    },
-    {
-        name: "Type",
-        data: Array.from({length: 100}, (_, i) => `Type ${i % 3 + 1}`)
-    },
-    {
-        name: "Status",
-        data: Array.from({length: 100}, (_, i) => (i % 2 === 0 ? "Active" : "Inactive"))
-    }
-];
-const columnsInvoices = [
-    {
-
-        name: "Name",
-        id: Array.from({length: 100}, (_, i) => i + 1),
-        data: Array.from({length: 100}, (_, i) => `Invoice ${i + 1}`)
-    },
-    {
-        name: "VAT",
-        data: Array.from({length: 100}, (_, i) => `VAT${i + 100000000}`)
-    },
-    {
-        name: "Country",
-        data: Array.from({length: 100}, (_, i) => {
-            const countries = ["France", "Germany", "Spain", "Italy", "UK", "USA", "Canada", "Australia", "Netherlands", "Belgium"];
-            return countries[i % countries.length];
-        })
-    },
-    {
-        name: "Type",
-        data: Array.from({length: 100}, (_, i) => `Type ${i % 3 + 1}`)
-    },
-    {
-        name: "Status",
-        data: Array.from({length: 100}, (_, i) => (i % 2 === 0 ? "Active" : "Inactive"))
-    }
-];
 
 function Dashboard() {
     return (
@@ -121,26 +41,21 @@ function Dashboard() {
             </section>
 
             {/* Contacts BDD*/}
-            <Datalist
-                title={"last invoices"}
-                columns={columnsInvoices}
-                dataType={"invoices"}
+            <ContactsList
+                title={"last contacts"}
                 adminMode={true}
             />
 
             {/* Invoices BDD*/}
-            <Datalist
-                title={"last contacts"}
-                columns={columnsContacts}
-                dataType={"contacts"}
+            <InvoicesList
+                title={"last invoices"}
                 adminMode={true}
             />
 
+
             {/* Companies BDD */}
-            <Datalist
-                title={"last companies"}
-                columns={columnsCompanies}
-                dataType={"companies"}
+            <CompaniesList
+                title="last companies"
                 adminMode={true}
             />
 

@@ -1,8 +1,12 @@
-import ContactsGet from "../components/queries/contactsGet.jsx";
+import ContactsList from "../components/queries/contactsGet.jsx";
 
 function Companies() {
     return (
-        <ContactsGet/>
+        <ContactsList
+            decorationBar={true}
+            hidePagination={false}
+            hideSearchBar={false}
+        />
     );
 }
 
