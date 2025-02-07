@@ -413,19 +413,19 @@ CREATE TABLE IF NOT EXISTS `users`
 --
 ALTER TABLE `companies`
     ADD CONSTRAINT `companies_ibfk_1` FOREIGN KEY (`type_id`) REFERENCES `types` (`id`)
-    ON DELETE CASCADE ON UPDATE CASCADE;
+        ON DELETE CASCADE ON UPDATE CASCADE;
 --
 -- Contraintes pour la table `contacts`
 --
 ALTER TABLE `contacts`
     ADD CONSTRAINT `contacts_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`)
-    ON DELETE CASCADE ON UPDATE CASCADE;
+        ON DELETE CASCADE ON UPDATE CASCADE;
 --
 -- Contraintes pour la table `invoices`
 --
 ALTER TABLE `invoices`
     ADD CONSTRAINT `invoices_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`)
-    ON DELETE CASCADE ON UPDATE CASCADE;
+        ON DELETE CASCADE ON UPDATE CASCADE;
 --
 -- Contraintes pour la table `roles_permission`
 --

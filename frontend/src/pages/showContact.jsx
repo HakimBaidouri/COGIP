@@ -15,7 +15,7 @@ function ShowContact({contact}) {
                     <p>Mail : <span className="font-semibold">{contact.email}</span></p>
                     <p>Company : <span className="font-semibold">{contact.company}</span></p>
                 </div>
-            </div>
+            </  div>
 
             <div className="flex justify-end col-auto w-full pr-[200px]">
                 <img src="../../public/show_contact/default_profile.png" alt="default profile picture"
