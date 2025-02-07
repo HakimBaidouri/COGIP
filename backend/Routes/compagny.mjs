@@ -14,7 +14,7 @@ const router = express.Router();
 
 //get all Companies
 router.get("/", (req, res) => {
-    const selectAllCompaniesQuery = "SELECT * FROM companies";
+    const selectAllCompaniesQuery = "SELECT * FROM companies ORDER BY companies.id DESC";
     connection.query(selectAllCompaniesQuery, (err, results) => {
         if (err) {
             return res.status(500).json({
@@ -43,7 +43,8 @@ router.get("/:id", (req, res) => {
                  LEFT JOIN types ON companies.type_id = types.id
                  LEFT JOIN contacts ON companies.id = contacts.company_id
                  LEFT JOIN invoices ON companies.id = invoices.company_id
-        WHERE companies.id = ?`;
+        WHERE companies.id = ?
+    `;
     connection.query(selectCompanyByIdQuery, [id], (err, results) => {
         if (err) {
             return res.status(500).json({
