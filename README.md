@@ -2,20 +2,20 @@
 
 COGIP is a web application designed to modernize the accounting workflow and rescue Jean-Christian Ranu from the nightmare of outdated software and endless Excel sheets.
 
-This team project challenges participants to consolidate our full-stack development skills while delivering a practical and efficient accounting solution.
+This team project challenges us to consolidate our full-stack development skills while delivering a practical and efficient accounting solution.
 
 ## 📌 Features
 
-✔️ **User Registration** – Allow users to create an account.
-✔️ **Authentication** – Secure login and logout functionality.
-✔️ **Invoices List Page** – View all invoices with filtering option.
-✔️ **Companies List Page** – Display all registered companies with filtering option.
-✔️ **Contacts List Page** – View all contacts with filtering option.
-✔️ **Invoice Details Page** – View detailed information about a specific invoice.
-✔️ **Company Details Page** – Access company-specific details and related contacts & invoices.
-✔️ **Contact Details Page** – View individual contact information.
-✔️ **Admin Dashboard** – View statistics, create invoices, companies, and contacts.
-✔️ **REST API Backend** – Expose secure API endpoints for data management.
+✔️ **User Registration** – Allow users to create an account.<br>
+✔️ **Authentication** – Secure login and logout functionality.<br>
+✔️ **Invoices List Page** – View all invoices with filtering option.<br>
+✔️ **Companies List Page** – Display all registered companies with filtering option.<br>
+✔️ **Contacts List Page** – View all contacts with filtering option.<br>
+✔️ **Invoice Details Page** – View detailed information about a specific invoice.<br>
+✔️ **Company Details Page** – Access company-specific details and related contacts & invoices.<br>
+✔️ **Contact Details Page** – View individual contact information.<br>
+✔️ **Admin Dashboard** – View statistics, create invoices, companies, and contacts.<br>
+✔️ **REST API Backend** – Expose secure API endpoints for data management.<br>
 
 ## 💻 Technologies Used
 
