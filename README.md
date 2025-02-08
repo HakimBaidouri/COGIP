@@ -63,7 +63,7 @@ DB_NAME=cogip
 
 5. Start the backend server: 
 ```bash
-npm node index.mjs
+node index.mjs
 ```
 The server should now be running at http://localhost:3001.
 
