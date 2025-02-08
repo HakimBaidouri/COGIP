@@ -77,6 +77,7 @@ CREATE TABLE IF NOT EXISTS `invoices`
     `id`         int(11)     NOT NULL AUTO_INCREMENT,
     `ref`        varchar(50) NOT NULL,
     `company_id` int(11)     NOT NULL,
+    `price`      float       NOT NULL DEFAULT 0,
     `created_at` datetime    NOT NULL DEFAULT current_timestamp(),
     `updated_at` datetime    NOT NULL DEFAULT current_timestamp(),
     PRIMARY KEY (`id`),
