@@ -39,7 +39,16 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
     const {id} = req.params;
-    const selectContactByIdQuery = "SELECT * FROM contacts WHERE id = ?";
+    const selectContactByIdQuery = `
+        SELECT contacts.id,
+               contacts.name AS name,
+               companies.name AS company,
+               contacts.email,
+               contacts.phone,
+               contacts.created_at 
+        FROM contacts 
+                JOIN companies ON contacts.company_id = companies.id
+        WHERE contacts.id = ?`;
     connection.query(selectContactByIdQuery, [id], (err, results) => {
         if (err) {
             return res.status(500).json({
