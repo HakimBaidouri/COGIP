@@ -115,6 +115,10 @@ The frontend should now be running at http://localhost:5173.
 - ```PUT cogip/api/contact/:id``` - Update a contact
 - ```DELETE cogip/api/contact/:id``` - Delete a contact
 
+## Little video
+![Aperçu de la vidéo](cogipVideo.gif) <br>
+Sorry about the quality, just to give you an idea 😢
+
 ## ✨ Collaborators
 
 The amazing team behind this project:
