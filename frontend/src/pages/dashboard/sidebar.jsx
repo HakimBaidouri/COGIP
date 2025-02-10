@@ -11,7 +11,7 @@ function Sidebar() {
         {/* Profil - BDD connexion */}
         <div className="text-center">
           <img
-            src="/path-to-image.jpg" 
+            src="../../public/show_contact/default_profile.png" 
             alt="Profile"
             className="w-22 h-22 rounded-full mx-auto text-base bg-cogip-blue"
           />
@@ -59,7 +59,7 @@ function Sidebar() {
         {/* Logout - BDD */}
         <div className="flex items-center justify-between text-xl border-t-1 pt-3 font-cogip-inter">
           <img
-            src="/path-to-image.jpg" 
+            src="../../public/show_contact/default_profile.png" 
             alt="Profile"
             className="w-10 h-10 text-xs rounded-full bg-cogip-blue"
           />
