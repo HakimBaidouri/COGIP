@@ -76,6 +76,7 @@ CREATE TABLE IF NOT EXISTS `invoices`
 (
     `id`         int(11)     NOT NULL AUTO_INCREMENT,
     `ref`        varchar(50) NOT NULL,
+    `price`      float       NOT NULL DEFAULT 0,
     `company_id` int(11)     NOT NULL,
     `created_at` datetime    NOT NULL DEFAULT current_timestamp(),
     `updated_at` datetime    NOT NULL DEFAULT current_timestamp(),
@@ -189,20 +190,20 @@ CREATE TABLE IF NOT EXISTS `users`
 -- Contraintes pour la table `companies`
 --
 ALTER TABLE `companies`
-    ADD CONSTRAINT `companies_ibfk_1` FOREIGN KEY (`type_id`) REFERENCES `types` (`id`);
-
+    ADD CONSTRAINT `companies_ibfk_1` FOREIGN KEY (`type_id`) REFERENCES `types` (`id`)
+        ON DELETE CASCADE ON UPDATE CASCADE;
 --
 -- Contraintes pour la table `contacts`
 --
 ALTER TABLE `contacts`
-    ADD CONSTRAINT `contacts_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`);
-
+    ADD CONSTRAINT `contacts_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`)
+        ON DELETE CASCADE ON UPDATE CASCADE;
 --
 -- Contraintes pour la table `invoices`
 --
 ALTER TABLE `invoices`
-    ADD CONSTRAINT `invoices_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`);
-
+    ADD CONSTRAINT `invoices_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`)
+        ON DELETE CASCADE ON UPDATE CASCADE;
 --
 -- Contraintes pour la table `roles_permission`
 --
